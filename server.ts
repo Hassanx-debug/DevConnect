@@ -18,7 +18,7 @@ async function startServer() {
   // Basic Security & CORS configuration
   app.use(
     cors({
-      origin: 'https://dev-connect-chi-six.vercel.app',
+      origin: ['https://dev-connect-chi-six.vercel.app', 'https://dev-connect.vercel.app'],
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization']
