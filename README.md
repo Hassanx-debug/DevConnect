@@ -6,7 +6,7 @@ DevConnect combines a cinematic UI, real-time social features, and a resilient b
 
 
 ---
-https://ais-dev-dyzevromrvpjlfvs4a4bos-234498803051.asia-east1.run.app/
+https://ais-pre-dyzevromrvpjlfvs4a4bos-234498803051.asia-east1.run.app/
 
 ## 🌐 Overview
 
