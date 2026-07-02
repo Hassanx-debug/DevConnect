@@ -1,3 +1,0 @@
-374kANkeAn1nAoRE
-
-mongodb+srv://hassanair5858_db_user:<db_password>@cluster0.9tk566w.mongodb.net/?appName=Cluster0

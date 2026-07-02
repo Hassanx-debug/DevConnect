@@ -1,9 +1,8 @@
 import axios from "axios";
 
 // Create Axios Instance
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:7860";
 const api = axios.create({
-  baseURL: 'https://hassan5858-devconnect.hf.space/api/v1',
+  baseURL: "/api/v1",
   headers: {
     "Content-Type": "application/json",
   },
@@ -64,7 +63,7 @@ api.interceptors.response.use(
 
       try {
         const { data } = await axios.post(
-          'https://hassan5858-devconnect.hf.space/api/v1/auth/refresh',
+          "/api/v1/auth/refresh",
           {},
           { withCredentials: true }
         );

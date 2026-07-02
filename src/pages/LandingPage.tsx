@@ -51,7 +51,7 @@ export default function LandingPage() {
       {/* ==========================================
           1. HERO SECTION (Cinematic Video + R3F Particles)
          ========================================== */}
-      <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-end overflow-hidden px-6 md:px-10 pt-24 pb-16 md:pb-24">
+      <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden px-6 md:px-10 pt-28 pb-16 md:pt-36 md:pb-24">
         {/* Fullscreen Background Video */}
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0 bg-black">
           <video
@@ -73,8 +73,8 @@ export default function LandingPage() {
         {/* Floating Red & White Three.js Particle Network on top of the background video */}
         <HeroScene />
 
-        {/* Hero content aligned toward the bottom of the viewport with generous spacing and strong typography */}
-        <div className="relative z-10 max-w-7xl w-full mx-auto text-left space-y-8">
+        {/* Hero content aligned toward the bottom/center of the viewport with generous spacing and strong typography */}
+        <div className="relative z-10 max-w-7xl w-full mx-auto text-left space-y-8 my-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="text-5xl sm:text-7xl md:text-[7.5rem] font-serif font-normal leading-[0.92] tracking-[-0.08em] text-white"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-serif font-normal leading-[0.92] tracking-[-0.08em] text-white"
             >
               Where code <br />
               finds its <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-300 to-white">Community.</span>

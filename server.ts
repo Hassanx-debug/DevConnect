@@ -13,15 +13,13 @@ async function startServer() {
   await connectDB();
 
   const app = express();
-  const PORT = process.env.PORT || 7860;
+  const PORT = 3000;
 
   // Basic Security & CORS configuration
   app.use(
     cors({
-      origin: ['https://dev-connect-chi-six.vercel.app', 'https://dev-connect.vercel.app'],
+      origin: true, // Allow AI Studio web preview & standard origins
       credentials: true,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization']
     })
   );
 
@@ -102,9 +100,8 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`📡 DevConnect API server running on port ${PORT}`);
-    console.log(`🔗 API routes versioned under: http://0.0.0.0:${PORT}/api/v1`);
-    console.log(`🌍 CORS enabled for: https://dev-connect-chi-six.vercel.app`);
+    console.log(`📡 DevConnect full-stack server running at http://localhost:${PORT}`);
+    console.log(`🔗 API routes versioned under: http://localhost:${PORT}/api/v1`);
   });
 }
 
