@@ -1,0 +1,6 @@
+{
+  "name": "DevConnect",
+  "description": "A premium, cinematic developer social platform featuring interactive 3D nodes, scroll storytelling, real-time-feeling feeds, nested comments, developer matching, and customizable profiles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
