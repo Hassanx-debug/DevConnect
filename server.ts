@@ -16,11 +16,12 @@ async function startServer() {
   const PORT = process.env.PORT || 7860;
 
   // Basic Security & CORS configuration
-  const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
   app.use(
     cors({
-      origin: CLIENT_URL,
+      origin: 'https://dev-connect-chi-six.vercel.app',
       credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization']
     })
   );
 
@@ -103,7 +104,7 @@ async function startServer() {
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`📡 DevConnect API server running on port ${PORT}`);
     console.log(`🔗 API routes versioned under: http://0.0.0.0:${PORT}/api/v1`);
-    console.log(`🌍 CORS enabled for: ${CLIENT_URL}`);
+    console.log(`🌍 CORS enabled for: https://dev-connect-chi-six.vercel.app`);
   });
 }
 
