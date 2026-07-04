@@ -3,6 +3,8 @@ A modern full-stack developer networking platform built to transform static port
 
 DevConnect combines a cinematic UI, real-time social features, and a resilient backend architecture designed for both local development and production scalability.
 
+View: https://ais-dev-dyzevromrvpjlfvs4a4bos-234498803051.asia-east1.run.app/
+
 🌐 Overview
 DevConnect is a developer-first social platform where engineers can:
 
