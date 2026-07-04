@@ -17,7 +17,7 @@ export default function NotificationsPage() {
     setLoading(true);
     try {
       const { data } = await api.get("/notifications");
-      setNotifications(data);
+      setNotifications(data.notifications || []);
     } catch (err) {
       toast("Failed to pull notifications stream.", "error");
     } finally {

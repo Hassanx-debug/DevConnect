@@ -77,7 +77,7 @@ router.post("/auth/register", async (req, res, next) => {
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    res.status(211).json({
+    res.status(201).json({
       message: "Registration successful!",
       accessToken,
       user: {
@@ -106,12 +106,12 @@ router.post("/auth/login", async (req, res, next) => {
     const cleanEmail = email.trim().toLowerCase();
     const user = await userService.findUserByEmail(cleanEmail);
     if (!user) {
-      return res.status(401).json({ error: "Invalid email or password." });
+      return res.status(404).json({ error: "No record found with this email. Please sign up as a new user." });
     }
 
     const isMatch = await comparePassword(password, user.passwordHash);
     if (!isMatch) {
-      return res.status(401).json({ error: "Invalid email or password." });
+      return res.status(401).json({ error: "Incorrect password. Please verify your credentials and try again." });
     }
 
     const accessToken = generateAccessToken(user.id, user.username);
@@ -476,7 +476,7 @@ router.post("/posts", authMiddleware, async (req: AuthenticatedRequest, res, nex
       techTags: techTags || []
     });
 
-    res.status(211).json(post);
+    res.status(201).json(post);
   } catch (err) {
     next(err);
   }
@@ -727,7 +727,7 @@ router.post("/comments", authMiddleware, async (req: AuthenticatedRequest, res, 
       }
     }
 
-    res.status(211).json(comment);
+    res.status(201).json(comment);
   } catch (err) {
     next(err);
   }

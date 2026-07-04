@@ -7,14 +7,39 @@ function generateId() {
   return new mongoose.Types.ObjectId().toString();
 }
 
-// Convert Mongoose Doc or Local JSON Object to clean standard format
-function cleanDoc(doc: any) {
+// Convert Mongoose Doc or Local JSON Object to clean standard format recursively
+function cleanDoc(doc: any): any {
   if (!doc) return null;
-  const cleaned = doc.toObject ? doc.toObject() : { ...doc };
-  if (cleaned._id) {
-    cleaned.id = cleaned._id.toString();
-  }
-  return cleaned;
+  const rawObj = doc.toObject ? doc.toObject() : { ...doc };
+
+  const recurse = (obj: any): any => {
+    if (!obj || typeof obj !== "object") return obj;
+
+    // Handle array of objects
+    if (Array.isArray(obj)) {
+      return obj.map(recurse);
+    }
+
+    // Skip Mongoose ObjectIds or Dates themselves
+    if (obj instanceof mongoose.Types.ObjectId || obj instanceof Date) {
+      return obj;
+    }
+
+    // Convert keys recursively
+    const newObj: any = {};
+    for (const key of Object.keys(obj)) {
+      newObj[key] = recurse(obj[key]);
+    }
+
+    // Ensure id is set if _id exists
+    if (newObj._id) {
+      newObj.id = newObj._id.toString();
+    }
+
+    return newObj;
+  };
+
+  return recurse(rawObj);
 }
 
 // ==========================================
@@ -1117,13 +1142,14 @@ export const statsService = {
       const totalUsers = await User.countDocuments();
       const totalPosts = await Post.countDocuments();
       const totalComments = await Comment.countDocuments();
-      return { totalUsers, totalPosts, totalComments };
+      return { totalUsers, totalPosts, totalComments, databaseType: "MongoDB Atlas (Production)" };
     } else {
       const db = readLocalDB();
       return {
         totalUsers: db.users.length,
         totalPosts: db.posts.length,
-        totalComments: db.comments.length
+        totalComments: db.comments.length,
+        databaseType: "Local Sandbox Fallback (Temporary/Stateless)"
       };
     }
   }
